@@ -7,7 +7,8 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
-class ExperienceAdapter (val experiences: MutableList<Experience>): RecyclerView.Adapter<ExperienceAdapter.ViewHolder>() {
+class ExperienceAdapter (val experiences: MutableList<Experience>,
+                         val itemClickListener: View.OnClickListener): RecyclerView.Adapter<ExperienceAdapter.ViewHolder>() {
 
     //inner class de CompetenceAdapter  | class imbriquer aucun raison d'exiter sans la class parent
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){

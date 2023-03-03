@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -57,8 +58,17 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        competenceAdapter = CompetenceAdapter(competenceMutableList)
-        experienceAdapter = ExperienceAdapter(experienceMutableList)
+        competenceAdapter = CompetenceAdapter(competenceMutableList){ view ->
+            val position = competenceRecycleView.getChildAdapterPosition(view)
+            val competence = competenceMutableList[position]
+            Toast.makeText(this, "J'ai cliquer sur${competence.title}", Toast.LENGTH_SHORT).show()
+        }
+
+        experienceAdapter = ExperienceAdapter(experienceMutableList){ view ->
+            val position = experienceRecyclerView.getChildAdapterPosition(view)
+            val experience = experienceMutableList[position]
+            Toast.makeText(this, "J'ai cliquer sur ${experience.title}", Toast.LENGTH_SHORT).show()
+        }
 
 
         competenceRecycleView.adapter = competenceAdapter
